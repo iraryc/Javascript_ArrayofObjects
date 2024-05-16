@@ -227,6 +227,8 @@
         const coursesContainer = document.getElementById('coursesContainer');
         coursesContainer.innerHTML = ''; // Clear previous content
 
+    
+
         coursesToDisplay.forEach(course => {
             const courseCard = `
                 <div class="col-md-4 mb-4">
@@ -236,12 +238,14 @@
                             <h5 class="card-title">${course.Course}</h5>
                             <p class="card-text">${course.CourseDescription}</p>
                             <p class="card-text"><strong>Price:</strong> $${course.Price}</p>
-                            <a href="${course.CourseURL}" class="btn btn-primary">Learn More</a>
+                            <a href="${course.CourseURL}" class="btn btn-primary learn">Learn More</a>
+                            <button class="myButton">Click Me</button>
                         </div>
                     </div>
                 </div>
             `;
             coursesContainer.insertAdjacentHTML('beforeend', courseCard);
+            
         });
     }
 
@@ -252,6 +256,20 @@
     document.getElementById('priceFilter').addEventListener('change', (event) => {
         filterCoursesByPrice(event.target.value);
     });
+
+    function runSecondCode() {
+        alert('Courses added to the shoppinglist');
+    }
+    
+        displayCourses(courses);
+        //myButton is the class that you gave the button and querySelectorAll gets all the buttons
+            const allbuttons =  document.querySelectorAll('.myButton');
+            console.log(allbuttons);
+            allbuttons.forEach(button => 
+            //runSecondCode is the function above that creates the alert or whatever you want it to do
+                button.addEventListener('mouseover', runSecondCode)
+            )
+    
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
